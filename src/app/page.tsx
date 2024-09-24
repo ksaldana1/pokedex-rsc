@@ -1,9 +1,9 @@
 import { graphql } from "gql.tada";
-import { pokemonFragment, Pokemon } from "./Pokemon";
 import { getClient } from "./client";
+import { Pokemon, pokemonFragment } from "./Pokemon";
 
-// prettier-ignore
-const PokemonsQuery = graphql(`
+const PokemonsQuery = graphql(
+  `
     query PokemonList {
       pokemons {
         ...PokemonFragment
@@ -14,11 +14,16 @@ const PokemonsQuery = graphql(`
 );
 
 export default async function Home() {
-  const result = await getClient().query(PokemonsQuery, {});
+  const { data } = await getClient().query(PokemonsQuery, {});
+
+  if (!data?.pokemons) {
+    throw new Error("No Pokemon found");
+  }
+
   return (
     <div className="w-1/2 grid grid-cols-3 justify-center items-center gap-y-4 gap-x-1 pt-8">
-      {result.data?.pokemons.map((p) => (
-        <Pokemon data={p} />
+      {data?.pokemons.map((pokemon) => (
+        <Pokemon pokemon={pokemon} key={pokemon.id} />
       ))}
     </div>
   );
