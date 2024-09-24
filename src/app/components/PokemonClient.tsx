@@ -1,4 +1,3 @@
-"use client";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 
@@ -13,9 +12,13 @@ export interface PokemonClientProps {
     name: string;
     image_url: string;
   };
+  setSelected: (id: number) => void;
 }
 
-export default function PokemonClient({ pokemon }: PokemonClientProps) {
+export default function PokemonClient({
+  pokemon,
+  setSelected,
+}: PokemonClientProps) {
   return (
     <div
       style={{
@@ -23,6 +26,7 @@ export default function PokemonClient({ pokemon }: PokemonClientProps) {
         height: 192,
         boxShadow: "0px 1px 3px 1px rgba(0, 0, 0, 0.2)",
       }}
+      onClick={() => setSelected(pokemon.id)}
       className={`flex flex-col justify-center items-center rounded-lg bg-white ${font.className} relative hover:bg-gray-100 hover:cursor-pointer`}
     >
       <div className="text-right min-w-full pe-2">
