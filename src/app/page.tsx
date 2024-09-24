@@ -15,9 +15,8 @@ const PokemonsQuery = graphql(`
 
 export default async function Home() {
   const result = await getClient().query(PokemonsQuery, {});
-  console.log(result);
   return (
-    <div className="w-full flex flex-col items-center bg-gray-500">
+    <div className="w-1/2 grid grid-cols-3 justify-center items-center gap-y-4 gap-x-1 pt-8">
       {result.data?.pokemons.map((p) => (
         <Pokemon data={p} />
       ))}

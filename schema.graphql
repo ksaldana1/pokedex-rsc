@@ -8,6 +8,7 @@ type Pokemon {
   baseExperience: Int!
   dimensions: Dimensions!
   id: Int!
+  image_url: String!
   name: String!
   type: [PokemonType!]!
 }
