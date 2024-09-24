@@ -22,7 +22,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="w-1/2 grid grid-cols-3 justify-center items-center gap-y-4 gap-x-1 pt-8">
+    <div className="lg:w-1/2 md:w-3/4 grid grid-cols-3 justify-center items-center gap-y-4 md:gap-x-8 pt-8">
       <Pokemons pokemons={data.pokemons} />
     </div>
   );
