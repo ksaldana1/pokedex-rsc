@@ -1,3 +1,4 @@
+import { animated, useSpring } from "@react-spring/web";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 
@@ -13,18 +14,25 @@ export interface PokemonClientProps {
     image_url: string;
   };
   setSelected: (id: number) => void;
+  selected: boolean;
 }
 
 export default function PokemonClient({
   pokemon,
   setSelected,
+  selected,
 }: PokemonClientProps) {
+  const transformStyle = useSpring({
+    transform: selected ? "scale(2)" : "scale(1)",
+  });
+
   return (
-    <div
+    <animated.div
       style={{
         width: 192,
         height: 192,
         boxShadow: "0px 1px 3px 1px rgba(0, 0, 0, 0.2)",
+        ...transformStyle,
       }}
       onClick={() => setSelected(pokemon.id)}
       className={`flex flex-col justify-center items-center rounded-lg bg-white ${font.className} relative hover:bg-gray-100 hover:cursor-pointer`}
@@ -44,6 +52,6 @@ export default function PokemonClient({
         className="h-1/3 absolute w-full bottom-0 z-0 rounded-lg"
       />
       <div className="z-10 mb-2">{pokemon.name}</div>
-    </div>
+    </animated.div>
   );
 }

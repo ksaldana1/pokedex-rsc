@@ -1,6 +1,6 @@
 import { graphql } from "gql.tada";
 import { getClient } from "./client";
-import { pokemonFragment } from "./Pokemon";
+import { pokemonFragment } from "./queries";
 import { Pokemons } from "./Pokemons";
 
 const PokemonsQuery = graphql(
