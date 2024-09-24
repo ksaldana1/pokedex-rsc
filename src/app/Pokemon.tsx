@@ -29,7 +29,7 @@ export const Pokemon = ({ data }: PokemonProps) => {
         height: 192,
         boxShadow: "0px 1px 3px 1px rgba(0, 0, 0, 0.2)",
       }}
-      className={`flex flex-col justify-center items-center rounded-lg bg-white ${font.className} relative`}
+      className={`flex flex-col justify-center items-center rounded-lg bg-white ${font.className} relative hover:bg-gray-100 hover:cursor-pointer`}
     >
       <div className="text-right min-w-full pe-2">
         {pokemon.id.toString().padStart(4, "#000")}
