@@ -18,6 +18,7 @@ export const Pokemons = ({ pokemons }: PokemonsProps) => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
+    trail: 25,
   });
 
   return transitions((style, item) => {

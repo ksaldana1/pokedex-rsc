@@ -45,7 +45,7 @@ export default function PokemonClient({
         height={128}
         alt={pokemon.name}
         src={pokemon.image_url}
-        className="z-10 object-fill"
+        className="z-10"
       />
       <div
         style={{ background: "rgb(239, 239, 239)" }}
