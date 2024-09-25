@@ -1,5 +1,4 @@
 import { Poppins } from "next/font/google";
-import Image from "next/image";
 import { FragmentOf, graphql, readFragment } from "gql.tada";
 
 const font = Poppins({
@@ -33,7 +32,7 @@ export default function Pokemon({ fragment }: PokemonProps) {
       <div className="min-w-full text-right pe-2">
         {pokemon.id.toString().padStart(4, "#000")}
       </div>
-      <Image
+      <img
         width={128}
         height={128}
         alt={pokemon.name}
