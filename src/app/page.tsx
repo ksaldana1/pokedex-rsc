@@ -1,10 +1,9 @@
 import { graphql } from "gql.tada";
 import { getClient } from "./client";
-import { pokemonFragment } from "./queries";
-import { Pokemons } from "./Pokemons";
+import Pokemon, { pokemonFragment } from "./components/Pokemon";
 
-const PokemonsQuery = graphql(
-  `
+// prettier-ignore
+const PokemonsQuery = graphql(`
     query PokemonList {
       pokemons {
         ...PokemonFragment
@@ -22,8 +21,10 @@ export default async function Home() {
   }
 
   return (
-    <div className="lg:w-7/12 md:w-3/4 grid grid-cols-3 justify-center items-center gap-y-4 md:gap-x-8 gap-x-2 pt-8">
-      <Pokemons pokemons={data.pokemons} />
+    <div className="items-center justify-center pt-8 lg:w-7/12 md:w-3/4 grid grid-cols-3 gap-y-4 md:gap-x-8 gap-x-2">
+      {data.pokemons.map((fragment, i) => (
+        <Pokemon fragment={fragment} key={i} />
+      ))}
     </div>
   );
 }
