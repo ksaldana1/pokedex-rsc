@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata: Metadata = {
   title: "Pokedex RSC",
@@ -12,8 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased flex justify-center`}>{children}</body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={`antialiased flex justify-center w-screen h-screen`}>
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
