@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import { Suspense } from "react";
+import ClientSideScrollRestorer from "./ClientSideRestorer";
 
 export const metadata: Metadata = {
   title: "Pokedex RSC",
@@ -18,6 +20,9 @@ export default function RootLayout({
         <body className={`antialiased flex justify-center w-screen h-screen`}>
           {children}
         </body>
+        <Suspense>
+          <ClientSideScrollRestorer />
+        </Suspense>
       </html>
     </ViewTransitions>
   );
